@@ -1,0 +1,38 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0 -- PROJECT\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: PROJECT
+collecting ... collected 5 items
+
+python/01-unit/test_bank.py::test_partial_withdrawal_changes_balance FAILED [ 20%]
+python/01-unit/test_bank.py::test_full_withdrawal_allows_zero_balance FAILED [ 40%]
+python/01-unit/test_bank.py::test_insufficient_balance_rejects_and_preserves_balance PASSED [ 60%]
+python/01-unit/test_bank.py::test_nonpositive_amount_rejects[0] PASSED   [ 80%]
+python/01-unit/test_bank.py::test_nonpositive_amount_rejects[-1] PASSED  [100%]
+
+================================== FAILURES ===================================
+___________________ test_partial_withdrawal_changes_balance ___________________
+
+    def test_partial_withdrawal_changes_balance():
+        a = Account("A", 1000)
+        a.withdraw(400)
+>       assert a.balance == 600
+E       assert 1400 == 600
+E        +  where 1400 = <bank.Account object at 0x000002C8505C0EC0>.balance
+
+python\01-unit\test_bank.py:8: AssertionError
+__________________ test_full_withdrawal_allows_zero_balance ___________________
+
+    def test_full_withdrawal_allows_zero_balance():
+        a = Account("A", 1000)
+        a.withdraw(1000)
+>       assert a.balance == 0
+E       assert 2000 == 0
+E        +  where 2000 = <bank.Account object at 0x000002C850608690>.balance
+
+python\01-unit\test_bank.py:14: AssertionError
+- generated xml file: PROJECT\evidence\python-01-unit-intentional-failure.xml -
+=========================== short test summary info ===========================
+FAILED python/01-unit/test_bank.py::test_partial_withdrawal_changes_balance
+FAILED python/01-unit/test_bank.py::test_full_withdrawal_allows_zero_balance
+========================= 2 failed, 3 passed in 0.30s =========================
