@@ -44,3 +44,6 @@ jobs:
           echo "Branch: ${{ github.ref_name }}"
           echo "Event: ${{ github.event_name }}"
 
+
+permissions:
+  contents: read

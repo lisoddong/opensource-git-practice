@@ -16,3 +16,6 @@ jobs:
           echo "Names: $NAMES"
           echo "Prices: $PRICES"
 
+
+permissions:
+  contents: read

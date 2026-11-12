@@ -29,3 +29,6 @@ jobs:
           echo "GITHUB_ENV = $DYNAMIC"
           echo "GITHUB_OUTPUT = $OUTPUT_VALUE"
 
+
+permissions:
+  contents: read

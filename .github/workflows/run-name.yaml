@@ -8,3 +8,6 @@ jobs:
       - name: Print Hello
         run: echo "Hello GitHub Actions"
 
+
+permissions:
+  contents: read

@@ -22,3 +22,6 @@ jobs:
           echo "JSON:"
           echo "$RESULT_JSON"
 
+
+permissions:
+  contents: read

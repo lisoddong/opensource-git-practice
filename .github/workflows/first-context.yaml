@@ -19,3 +19,6 @@ jobs: # job
           echo "Architecture: ${{ runner.arch }}"
           echo "Environment: ${{ runner.environment }}"
           echo "Temp: ${{ runner.temp }}"
+
+permissions:
+  contents: read

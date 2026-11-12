@@ -37,3 +37,6 @@ jobs:
         if: ${{ cancelled() }}
         run: echo "Workflow was cancelled"
 
+
+permissions:
+  contents: read

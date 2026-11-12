@@ -13,3 +13,6 @@ jobs:
           echo "String: String can also be written in this form"
           echo "Null: ${{ null }}"
 
+
+permissions:
+  contents: read

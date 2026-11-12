@@ -32,3 +32,6 @@ jobs:
     steps:
       - run: echo "Always executed"
 
+
+permissions:
+  contents: read

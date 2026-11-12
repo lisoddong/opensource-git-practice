@@ -22,3 +22,6 @@ jobs:
         env:
           RESULT_YAML: "${{ hashFiles('.github/workflows/*.yaml') }}"
         run: printenv | grep '^RESULT_'
+
+permissions:
+  contents: read

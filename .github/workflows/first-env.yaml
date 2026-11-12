@@ -36,3 +36,6 @@ jobs:
           echo "Version: $APP_VERSION"
           echo "Message: $MESSAGE"
 
+
+permissions:
+  contents: read

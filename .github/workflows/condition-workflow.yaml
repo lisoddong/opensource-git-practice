@@ -21,3 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Job3 executed"
+
+permissions:
+  contents: read

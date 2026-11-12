@@ -7,3 +7,6 @@ jobs:
       USERNAME: ${{ vars.USERNAME }}
     steps:
       - run: echo "$USERNAME"
+
+permissions:
+  contents: read

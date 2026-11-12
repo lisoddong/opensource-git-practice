@@ -35,3 +35,6 @@ jobs:
 
       - name: Context Environment
         run: echo "$ACTOR"
+
+permissions:
+  contents: read

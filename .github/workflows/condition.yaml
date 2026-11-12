@@ -17,3 +17,6 @@ jobs:
         run: echo "Goodbye"
         if: ${{ !contains(github.run_id, '1') }}
 
+
+permissions:
+  contents: read

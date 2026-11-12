@@ -29,3 +29,6 @@ jobs: # task 단위
         run: echo "$MESSAGE"
 
 
+
+permissions:
+  contents: read

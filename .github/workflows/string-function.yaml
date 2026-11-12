@@ -16,3 +16,6 @@ jobs:
 
         run: printenv | grep '^TEST_' | sort
 
+
+permissions:
+  contents: read

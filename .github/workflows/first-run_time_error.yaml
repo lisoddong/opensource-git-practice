@@ -20,3 +20,6 @@ jobs:
       - name: Logic Error
         run: |
           python -c "print('Result:', 10 + 5 - 3)"
+
+permissions:
+  contents: read
