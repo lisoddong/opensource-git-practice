@@ -1,0 +1,8 @@
+name: Hello    # 워크플로우명
+on: push       # 이벤트
+jobs:          # 잡 정의
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, world!!"
+      - uses: actions/checkout@v4
