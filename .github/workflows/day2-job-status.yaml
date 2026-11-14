@@ -1,12 +1,12 @@
 name: Job Status Example
 on: workflow_dispatch
 jobs:
-  # 1. 의도적으로 실패하는 Job
+  # 1. 첫 번째 작업 실행
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail
-        run: exit 1
+      - name: Check runner OS
+        run: test "$RUNNER_OS" = Linux
 
   # 2. job1이 성공할 때만 실행
   job2:
