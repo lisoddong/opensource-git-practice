@@ -12,7 +12,7 @@ def test_report_revenue(sample_csv, tmp_path):
     html = report.read_text(encoding="utf-8")
     assert report.name == "index.html"
     assert "<h1>OrderLab Report</h1>" in html
-    assert "Revenue: 35,001 KRW" in html
+    assert "Revenue: 35,000 KRW" in html
     assert '<meta charset="utf-8">' in html
 
 
@@ -38,7 +38,12 @@ def test_import_does_not_create_site(tmp_path):
         [
             sys.executable,
             "-c",
-            "import sys; sys.path.insert(0, sys.argv[1]); import generate_report",
+            "import sys\n"
+            "from unittest.mock import patch\n"
+            "sys.path.insert(0, sys.argv[1])\n"
+            "with patch('pathlib.Path.write_text', "
+            "side_effect=AssertionError('import wrote a file')):\n"
+            "    import generate_report\n",
             str(root),
         ],
         cwd=tmp_path,

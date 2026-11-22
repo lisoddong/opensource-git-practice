@@ -89,3 +89,31 @@ Starlette deprecation 경고가 출력되며 테스트 결과와 별도로 표�
 두 OS 테스트가 실패하고 deploy가 skipped 되는 것을 확인한 뒤
 실제 합계인 35,000원으로 복구했습니다.
 [PR 실패 재현](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020604256).
+
+[수정된 PR 실행](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020700260)에서
+quality와 두 OS 테스트가 통과하고 deploy는 skipped였습니다.
+[PR #12](https://github.com/lisoddong/opensource-git-practice/pull/12)를 main에 병합한 뒤
+[첫 Pages 배포](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020791600)가 성공했습니다.
+이후 main에서 같은 결함을 재현한
+[배포 차단 실행](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020936588)은
+quality·두 OS 테스트가 failure, deploy가 skipped였습니다. 기댓값은 다시 복구했습니다.
+
+## 제출 및 재현
+
+- [실습 저장소](https://github.com/lisoddong/opensource-git-practice)
+- [최신 CI/CD 실행 목록](https://github.com/lisoddong/opensource-git-practice/actions/workflows/ci-cd.yml)
+- [배포된 OrderLab 보고서](https://lisoddong.github.io/opensource-git-practice/)
+
+정상·예외·경계값을 포함한 테스트는 총 43개입니다.
+함수와 API, 보고서 생성의 로컬 검증 및 Linux·Windows CI를 수행했습니다.
+PR 변경에서는 앱 상태 격리, 실제 CSV 합계, PR 배포 제외,
+main 배포의 선행 검사 조건을 검토했습니다.
+
+이번 로컬 실습에서는 Python 3.14.10 환경을 `.tools/orderlab-venv`에 만들었습니다.
+이 컴퓨터에서는 `.tools/orderlab-venv/Scripts/python.exe`를 사용할 수 있습니다.
+Windows 공용 임시 폴더에 접근 오류가 있으면 별도의 빈 임시 디렉터리를
+`pytest --basetemp`로 지정합니다.
+
+각 단계의 완료본 업로드 후 다음 단계 착수까지 무작위로 정한
+7분 15초, 4분 12초, 3분 4초, 7분 42초를 실제로 기다렸습니다.
+커밋 시각은 실제 실행 시각입니다.
