@@ -48,3 +48,16 @@ python -m pytest --cov=orderlab --cov-report=term-missing --cov-report=xml
 ```
 
 CI 실행의 Artifacts에서 `coverage-xml`을 내려받을 수 있습니다.
+
+[Level 3 CI 및 artifact](https://github.com/lisoddong/opensource-git-practice/actions/runs/45019344103).
+
+## Level 4
+
+`create_app()` 호출마다 별도의 메모리 주문 저장소를 생성합니다.
+POST `/orders`는 201, GET `/orders/{id}`는 200,
+없는 ID는 404, 입력 검증 오류는 422를 반환합니다.
+테스트는 상태 코드·JSON·입력 거부 후 상태·앱 사이의 데이터 독립성을 확인합니다.
+
+CI는 lint, test (ubuntu-latest), test (windows-latest) 세 job으로 구성합니다.
+두 OS의 커버리지는 `coverage-xml-ubuntu-latest`와
+`coverage-xml-windows-latest` artifact에 각각 저장됩니다.
