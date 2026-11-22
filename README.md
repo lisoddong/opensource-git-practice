@@ -84,3 +84,8 @@ Pages의 Build and deployment는 GitHub Actions로 설정합니다.
 Ruff 0.17.6, pytest 9.2.0, pytest-cov 7.1.0, FastAPI 0.165.0,
 httpx 0.28.1입니다. 현재 FastAPI 테스트에서는 httpx 연동에 대한
 Starlette deprecation 경고가 출력되며 테스트 결과와 별도로 표시됩니다.
+
+보고서 테스트의 기댓값을 35,001원으로 변경한 PR에서 quality와
+두 OS 테스트가 실패하고 deploy가 skipped 되는 것을 확인한 뒤
+실제 합계인 35,000원으로 복구했습니다.
+[PR 실패 재현](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020604256).
