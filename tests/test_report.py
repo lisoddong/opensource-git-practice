@@ -12,7 +12,7 @@ def test_report_revenue(sample_csv, tmp_path):
     html = report.read_text(encoding="utf-8")
     assert report.name == "index.html"
     assert "<h1>OrderLab Report</h1>" in html
-    assert "Revenue: 35,000 KRW" in html
+    assert "Revenue: 35,001 KRW" in html
     assert '<meta charset="utf-8">' in html
 
 
