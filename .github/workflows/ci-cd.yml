@@ -2,6 +2,9 @@ name: OrderLab CI-CD
 on: [push, pull_request]
 permissions:
   contents: read
+defaults:
+  run:
+    working-directory: 3주차/orderlab-project
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -28,12 +31,18 @@ jobs:
       - run: python -m pip install -r requirements-dev.txt
       - name: Test with coverage
         run: python -m pytest --cov=orderlab --cov-report=term-missing --cov-report=xml
+      - name: Bank account unit tests
+        working-directory: 3주차/python/01-unit
+        run: python -m pytest -q
+      - name: Bank account integration tests
+        working-directory: 3주차/python/02-integration
+        run: python -m pytest -q
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coverage-xml-${{ matrix.os }}
-          path: coverage.xml
+          path: 3주차/orderlab-project/coverage.xml
           if-no-files-found: ignore
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -58,6 +67,6 @@ jobs:
       - run: python generate_report.py
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: 3주차/orderlab-project/site
       - id: deployment
         uses: actions/deploy-pages@v4
