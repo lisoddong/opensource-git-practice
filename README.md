@@ -61,3 +61,31 @@ POST `/orders`는 201, GET `/orders/{id}`는 200,
 CI는 lint, test (ubuntu-latest), test (windows-latest) 세 job으로 구성합니다.
 두 OS의 커버리지는 `coverage-xml-ubuntu-latest`와
 `coverage-xml-windows-latest` artifact에 각각 저장됩니다.
+
+[API 실습 PR](https://github.com/lisoddong/opensource-git-practice/pull/9)에서
+세 검사가 통과했고 main에 병합했습니다.
+
+## Level 5
+
+`data/sample_orders.csv`의 샘플 매출은 35,000원입니다.
+다음 명령으로 `site/index.html`을 생성합니다.
+
+```powershell
+python generate_report.py
+```
+
+최종 workflow는 `.github/workflows/ci-cd.yml`입니다.
+모든 push 및 PR에서 quality(Ruff·pytest), Ubuntu 테스트, Windows 테스트를 실행합니다.
+deploy는 `main` push이고 quality와 두 OS 테스트가 모두 통과했을 때만 실행합니다.
+PR과 다른 브랜치에서는 deploy가 skipped이며, 검사 실패 시에도 배포가 차단됩니다.
+Pages의 Build and deployment는 GitHub Actions로 설정합니다.
+
+이번 과제는 Python 3.14로 수행했습니다. 로컬 검증 도구는
+Ruff 0.17.6, pytest 9.2.0, pytest-cov 7.1.0, FastAPI 0.165.0,
+httpx 0.28.1입니다. 현재 FastAPI 테스트에서는 httpx 연동에 대한
+Starlette deprecation 경고가 출력되며 테스트 결과와 별도로 표시됩니다.
+
+보고서 테스트의 기댓값을 35,001원으로 변경한 PR에서 quality와
+두 OS 테스트가 실패하고 deploy가 skipped 되는 것을 확인한 뒤
+실제 합계인 35,000원으로 복구했습니다.
+[PR 실패 재현](https://github.com/lisoddong/opensource-git-practice/actions/runs/45020604256).
