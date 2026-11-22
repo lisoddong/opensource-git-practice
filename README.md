@@ -33,3 +33,18 @@ python -m pytest -q
 `<= 50_000`을 사용한 결함에서 50,000원 주문에 배송비가 붙어
 CI 테스트 2개가 실패했습니다. `< 50_000`으로 수정했습니다.
 [실제 실패 로그](https://github.com/lisoddong/opensource-git-practice/actions/runs/45018809812).
+
+[수정 후 CI 성공](https://github.com/lisoddong/opensource-git-practice/actions/runs/45018893125).
+
+## Level 3
+
+CSV의 price × quantity 합계를 계산합니다. 각 테스트는 `tmp_path` 안에
+독립된 파일을 생성하며 `sample_csv` fixture를 함께 사용합니다.
+빈 파일·헤더만 있는 파일은 0, 없는 파일은 FileNotFoundError,
+숫자 변환 오류는 ValueError, 필수 열 누락은 KeyError로 검증합니다.
+
+```powershell
+python -m pytest --cov=orderlab --cov-report=term-missing --cov-report=xml
+```
+
+CI 실행의 Artifacts에서 `coverage-xml`을 내려받을 수 있습니다.
